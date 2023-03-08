@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>邮箱绑定</title>
+        <link rel="stylesheet" type="text/css" href="Css/email.css"/>
+        <script src="JS/jquery-1.8.3.min.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <h1>邮箱绑定</h1>
+            <div class="inpt-box">
+                <p class="tit">邮箱：</p>
+                <input type="text" id="email">
+            </div>
+            <div class="inpt-box">
+                <p class="tit">验证码：</p>
+                <input type="text" id="code">
+                <a id="getcode" href="javascript:void(0);">发送验证码</a>
+            </div>
+            <a id="sub" href="javascript:void(0);">确认绑定</a>
+        </div>
+    </body>
+    <script>
+        //发送验证码按钮绑定点击事件
+    $("#getcode").click(function(){
+        var email=$("#email").val();   //获取用户输入的邮箱地址
+        var reg=/^[A-Za-z0-9]+([_\.][A-Za-z0-9]+)*@([A-Za-z0-9\-]+\.)+[A-Za-z]{2,6}$/; //邮箱验证正则
+        //验证邮箱格式，邮箱格式错误，弹窗提示信息并阻止程序继续执行
+        if(!reg.test(email)){
+            alert("请输入正确的邮箱");
+            return;
+        }
+        //ajax发送请求
+        $.ajax({
+            url:"Send_email.php",   //请求地址
+            type:"post", //请求方式
+            data:{   //要发送到服务器的数据
+                email:email
+            },
+            dataType:"json",  //预期服务器返回的数据类型为json格式
+            cache:true,  //缓存此页面
+            success:function(res){    //请求成功回调函数
+                //判断服务端响应状态码
+                if(res.status==2){//验证码发送成功
+                    alert(res.msg);
+                    $("#getcode").html("重新发送验证码");   //修改验证码获取按钮内容
+                }else if(res.status==3){  //验证码发送失败
+                    alert(res.msg);
+                }
+            },
+            error:function(xhr,err){  //请求失败回调函数
+                alert("请求失败,错误信息："+err);
+            }
+        })
+    });
+    </script>
+</html>

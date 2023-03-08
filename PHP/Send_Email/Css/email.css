@@ -1,0 +1,20 @@
+/* 初始化样式 */
+*{ margin: 0px; padding: 0; font-family: "microsoft yahei"; font-size: 16px;}
+html,body{ width: 100%; height: 100%; background-color: #ddd;}
+a{ text-decoration: none;}
+ 
+/* 输入窗口盒子 */
+#box{ width: 400px; height: 220px; padding: 20px 50px; margin:auto; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; background-color: #fff; box-shadow: 10px 10px 10px #000; overflow: hidden;}
+/* 盒子标题 */
+#box h1{ height: 40px; border-bottom: 1px #2289f0 solid; text-align: center; line-height: 40px; font-size: 22px; font-weight: 400; color: #2289F0; overflow: hidden;}
+/* 输入框盒子 */
+.inpt-box{ width: 300px; height: 30px; margin: 20px auto 0px; overflow: hidden;}
+.tit{ float: left; width: 70px; height: 100%; line-height: 30px; text-align: right; color: #2289F0; overflow:hidden;}
+/* 输入框 */
+.inpt-box input{ float: left; width: 228px; height: 28px; border: 1px solid #ccc; text-indent: 5px;}
+/* 验证码输入框 */
+.inpt-box #code{ width: 100px;}
+/* 发送验证码按钮 */
+#getcode{ display: inline-block; float: right; width: 118px; height: 28px; border: 1px solid #2289F0; color: #2289F0; text-align: center; line-height: 28px; font-size: 14px; border-radius: 3px; box-shadow: inset 0px 0px 10px #2289F0; overflow: hidden;}
+/* 确认绑定按钮 */
+#sub{ display: block; margin: 30px auto 10px; width: 120px; height: 36px; line-height: 36px; background-color: #2289F0; color: #fff; text-align: center; font-size: 17px; border-radius: 5px; overflow: hidden;}
